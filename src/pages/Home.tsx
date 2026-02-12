@@ -2,7 +2,8 @@ import { useState } from "react";
 import { toast } from "react-hot-toast";
 import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import logo from "././../../public/logo.png"
+import logo from "/logo.png"
+import { ArrowBigDown } from "lucide-react";
 
 const Home = () => {
     const [isVerified, setIsVerified] = useState(false);
@@ -135,7 +136,8 @@ const Home = () => {
                                     : "bg-yellow-200 text-blue-950 hover:bg-gray-300"
                                     }`}
                             >
-                                Click here ⮟
+                                Click here 
+                                <ArrowBigDown className="inline ml-1 w-4 h-4"/>
 
                             </button>
 
