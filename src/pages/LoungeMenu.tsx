@@ -129,72 +129,76 @@ const menuData: Record<string, { name: string; price: string }[]> = {
 };
 
 export default function LoungeMenu() {
-  const [openCategory, setOpenCategory] = useState<string | null>(null);
+    const [openCategory, setOpenCategory] = useState<string | null>(null);
 
-  const toggleCategory = (category: string) => {
-    setOpenCategory((prev) => (prev === category ? null : category));
-  };
+    const toggleCategory = (category: string) => {
+        setOpenCategory((prev) => (prev === category ? null : category));
+    };
 
-  return (
-    <div className="min-h-screen  text-yellow-300 p-6 max-w-4xl mx-auto">
-      <h1 className="text-4xl font-bold text-center mb-10 text-yellow-400">
-        Lounge Price List
-      </h1>
+    return (
+        <div className="min-h-screen  text-yellow-300 p-6 max-w-4xl mx-auto">
+            <h1 className="text-4xl font-bold text-center mb-10 text-yellow-400">
+                Lounge Price List
+            </h1>
 
-      <div className="space-y-4">
-        {categories.map((category) => {
-          const isOpen = openCategory === category;
+            <div className="space-y-4">
+                {categories.map((category) => {
+                    const isOpen = openCategory === category;
 
-          return (
-            <div
-              key={category}
-              className="border border-zinc-700 rounded-xl overflow-hidden bg-gray-100"
-            >
-              {/* Header */}
-              <button
-                onClick={() => toggleCategory(category)}
-                className="w-full flex justify-between items-center p-5 bg-blue-950 hover:bg-zinc-800 transition"
-              >
-                
-                <span className="text-lg font-semibold">{category}</span>
-                <motion.div
-                  animate={{ rotate: isOpen ? 180 : 0 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <ChevronDown />
-                </motion.div>
-              </button>
-
-              {/* Dropdown Content */}
-              <AnimatePresence>
-                {isOpen && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.4 }}
-                    className="bg-zinc-800"
-                  >
-                    <div className="p-4 space-y-3">
-                      {menuData[category]?.map((item, index) => (
-                        <div
-                          key={index}
-                          className="flex justify-between border-b border-zinc-700 pb-2"
+                    return (
+                        <motion.div
+                            initial={{ y: 50, opacity: 0 }}
+                            animate={{ y: 0, opacity: 1 }}
+                            exit={{ y: 50, opacity: 0 }}
+                            transition={{ duration: 0.6 }}
+                            key={category}
+                            className="border border-zinc-700 rounded-xl overflow-hidden bg-gray-100"
                         >
-                          <span>{item.name}</span>
-                          <span className="text-yellow-400 font-semibold">
-                            {item.price}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+                            {/* Header */}
+                            <button
+                                onClick={() => toggleCategory(category)}
+                                className="w-full flex justify-between items-center p-5 bg-blue-950 hover:bg-zinc-800 transition"
+                            >
+
+                                <span className="text-lg font-semibold">{category}</span>
+                                <motion.div
+                                    animate={{ rotate: isOpen ? 180 : 0 }}
+                                    transition={{ duration: 0.3 }}
+                                >
+                                    <ChevronDown />
+                                </motion.div>
+                            </button>
+
+                            {/* Dropdown Content */}
+                            <AnimatePresence>
+                                {isOpen && (
+                                    <motion.div
+                                        initial={{ height: 0, opacity: 0 }}
+                                        animate={{ height: "auto", opacity: 1 }}
+                                        exit={{ height: 0, opacity: 0 }}
+                                        transition={{ duration: 0.4 }}
+                                        className="bg-zinc-800"
+                                    >
+                                        <div className="p-4 space-y-3">
+                                            {menuData[category]?.map((item, index) => (
+                                                <div
+                                                    key={index}
+                                                    className="flex justify-between border-b border-zinc-700 pb-2"
+                                                >
+                                                    <span>{item.name}</span>
+                                                    <span className="text-yellow-400 font-semibold">
+                                                        {item.price}
+                                                    </span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>
+                        </motion.div>
+                    );
+                })}
             </div>
-          );
-        })}
-      </div>
-    </div>
-  );
+        </div>
+    );
 }
