@@ -136,8 +136,8 @@ export default function LoungeMenu() {
     };
 
     return (
-        <div className="min-h-screen  text-yellow-300 p-6 max-w-4xl mx-auto">
-            <h1 className="text-4xl font-bold text-center mb-10 text-yellow-400">
+        <div className="min-h-screen  text-yellow-300 p-4 max-w-4xl mx-auto">
+            <h1 className="text-4xl font-bold  mb-5 ml-1 text-yellow-400">
                 Lounge Price List
             </h1>
 
