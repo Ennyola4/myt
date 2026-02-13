@@ -59,6 +59,7 @@ const menuData: Record<string, { name: string; price: string }[]> = {
         { name: "Gordon", price: "₦15,000" },
         { name: "Gordon (Small)", price: "₦5,000" },
         { name: "Jack William", price: "₦15,000" },
+        { name: "Lacoco", price: "₦1,500"}
     ],
 
     Tequila: [
